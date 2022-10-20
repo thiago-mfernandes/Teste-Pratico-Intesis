@@ -3,8 +3,18 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 
   :root {
-    --background: #f0f2f5;
-    --red: #e52e4d;
+    --background: #fff;
+    --background-button: #EAF1F8;
+
+    --green: #27CFBD;
+    --red: #EA3F7A;
+    --blue: #2873B6;
+    
+    --textLabel: #121214; //texto da label
+    --textTable: #929292; //texto da tabela
+    --input: #d5d5d5; //borda do input
+
+    --thead: #808080; //linha do thead
   }
 
   * {
