@@ -1,10 +1,10 @@
-//import styled from 'styled-components';
 import { Formulario } from './components/Formulario';
 import { Header } from './components/Header';
 import { TabelaClientes } from './components/TabelaClientes';
 import { GlobalStyle } from './styles/global';
+import { MagnifyingGlass, PlusCircle } from 'phosphor-react';
 
-import { PlusCircle } from 'phosphor-react';
+import { Container, BotaoAdicionar, ContainerSearch } from './styles';
 
 
 export default function App() {
@@ -13,14 +13,22 @@ export default function App() {
       <GlobalStyle />
       <Header />
 
-      <button>
-        <PlusCircle />
-        Cliente
-      </button> {/**enviar para cadastro */}
-      <input type="text" />
+      <Container>
+        <BotaoAdicionar>
+          <PlusCircle size={20}/>
+          Cliente
+        </BotaoAdicionar> {/**enviar para cadastro */}
+
+        <ContainerSearch>
+          <label htmlFor="search">
+            <MagnifyingGlass color='#2873B6' size={20}/>
+          </label>
+          <input type="search" id="search"/>
+        </ContainerSearch>  
+      </Container>
 
       <TabelaClientes />
-      <Formulario />
+      {/*<Formulario />*/}
     </div>
   );
 }
