@@ -1,7 +1,9 @@
+import { Container } from './styles';
+
 export function Header() {
   return (
-    <header>
+    <Container>
       <h2>Cadastro / Clientes</h2>
-    </header>
+    </Container>
   );
 }

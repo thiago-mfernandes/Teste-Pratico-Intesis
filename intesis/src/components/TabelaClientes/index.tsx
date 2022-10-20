@@ -3,12 +3,12 @@ export function TabelaClientes() {
     <table>
       <thead>
         <tr>
-          <td>ID</td>
-          <td>Nome/Razão Social</td>
-          <td>CPF/CNPJ</td>
-          <td>Email</td>
-          <td>Tel</td>
-          <td>Cel</td>
+          <th>Ih</th>
+          <th>Nome/Razão Social</th>
+          <th>CPF/CNPJ</th>
+          <th>Email</th>
+          <th>Tel</th>
+          <th>Cel</th>
         </tr>
       </thead>
       <tbody>

@@ -4,7 +4,8 @@ import { Header } from './components/Header';
 import { TabelaClientes } from './components/TabelaClientes';
 import { GlobalStyle } from './styles/global';
 
-//const Title = styled.h1``;
+import { PlusCircle } from 'phosphor-react';
+
 
 export default function App() {
   return (
@@ -12,11 +13,13 @@ export default function App() {
       <GlobalStyle />
       <Header />
 
-      <button>Icone + Cliente</button> {/**enviar para cadastro */}
+      <button>
+        <PlusCircle />
+        Cliente
+      </button> {/**enviar para cadastro */}
       <input type="text" />
 
       <TabelaClientes />
-
       <Formulario />
     </div>
   );

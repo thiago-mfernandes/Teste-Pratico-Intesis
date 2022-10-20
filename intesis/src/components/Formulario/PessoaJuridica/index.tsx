@@ -1,6 +1,7 @@
 export function PessoaJuridica() {
   return (
     <form>
+      <p>formulario de pessoa juridica</p>
       <div>          
         <label>
           <input type="text" />
