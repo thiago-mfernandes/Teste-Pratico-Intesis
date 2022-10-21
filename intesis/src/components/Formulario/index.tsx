@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { PessoaFisica } from "./PessoaFisica";
 import { PessoaJuridica } from './PessoaJuridica/index';
 
-import { GrupoEscolha, Titulo, ContainerButton } from './styles';
+import { GrupoEscolha, Titulo } from './styles';
 
 export function Formulario() {
 
@@ -52,12 +52,6 @@ export function Formulario() {
           ? <PessoaJuridica />
           : <PessoaFisica />
       }
-
-      <ContainerButton>
-        <button type="submit" name="salvar">Salvar</button>
-        <button name="cancelar">Cancelar</button>
-      </ContainerButton>
-      
     </>
   );
 }

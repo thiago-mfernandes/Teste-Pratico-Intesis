@@ -1,43 +1,91 @@
-import { DadosPessoais, DadosResidenciais, FormularioContainer, InputContainer } from "./styles";
+import { 
+  ContainerButton, 
+  DadosPessoais, 
+  DadosResidenciais, 
+  FormularioContainer, 
+  InputContainer } from "./styles";
+
 import estadoCivil from "../../../data/estadoCivil.json";
 import unidadeFederativa from "../../../data/unidadeFederative.json";
 
+import { Link } from "react-router-dom";
+
+import { useForm } from 'react-hook-form';
+
+import { useContext } from "react";
+import { ClientesContext } from "../../../ClientsContext";
+
 export function PessoaFisica() {
+
+  const { register, handleSubmit, formState: { errors }} = useForm();
+  const { clientes, createClient } = useContext(ClientesContext);
+
+  async function onSubmit(data: Object) {
+    await createClient(data);    
+  }
+
+
   return(
-    <FormularioContainer>
+    <FormularioContainer 
+      onSubmit={handleSubmit(onSubmit)}
+    >
 
       <DadosPessoais>
         <InputContainer size="grande">
           <label htmlFor="nome">
             Nome Completo
           </label>
-          <input type="text" name="nome" required/>
+          <input 
+            required
+            id="nome" 
+            {...register("nome")}
+            type="text" 
+          />
         </InputContainer>
 
         <InputContainer size="grande">
           <label htmlFor="apelido">
             Apelido
           </label>
-          <input type="text" name="apelido"/>
+          <input 
+            id="apelido"
+            {...register("apelido")}
+            type="text" 
+          />
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="cpf">
             CPF
           </label>
-          <input type="number" placeholder="000.000.000-00" name="cpf" required/>
+          <input 
+            required
+            type="number" 
+            placeholder="000.000.000-00" 
+            id="cpf" 
+            {...register("cpf")}
+          />
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="nascimentoResponsavel">
             Data Nasc. Responsável
           </label>
-          <input type="date" placeholder="00/00/0000" name="nascimentoResponsavel"/>
+          <input 
+            type="date" 
+            placeholder="00/00/0000" 
+            id="nascimentoResponsavel"
+            {...register("nascimentoResponsavel")}
+          />
         </InputContainer>
 
         <InputContainer size="40%">
-          <label htmlFor="Estado Civil">Estado Civil</label>
-          <select name="Estado Civil" required>
+          <label htmlFor="EstadoCivil">Estado Civil</label>
+          <select 
+              required
+              id="EstadoCivil" 
+              {...register("EstadoCivil")}
+            >
             {
               estadoCivil.map((item, index) => (
                 <option key={index} value={item.estado}>{item.estado}</option>
@@ -50,19 +98,32 @@ export function PessoaFisica() {
           <label htmlFor="rg">
             RG/RNE
           </label>
-          <input type="text" name="rg" required/>
+          <input 
+            required
+            type="text" 
+            id="rg" 
+            {...register("rg")}
+          />
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="orgaoEmissor">
             Órgão Emissor
           </label>
-          <input type="text" name="orgaoEmissor"/>
+          <input 
+            type="text" 
+            id="orgaoEmissor"
+            {...register("orgaoEmissor")}
+          />
         </InputContainer>
 
         <InputContainer size="40%">
           <label htmlFor="UF">UF</label>
-          <select name="UF" required>
+          <select 
+            required
+            id="UF"
+            {...register("UF")}
+          >
             {
               unidadeFederativa.map((item, index) => (
                 <option key={index} value={item.uf}>{item.uf}</option>
@@ -75,42 +136,67 @@ export function PessoaFisica() {
           <label htmlFor="cnh">
             CNH
           </label>
-          <input type="number" name="cnh"/>
+          <input 
+            type="number" 
+            id="cnh"
+            {...register("cnh")}
+          />
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="seguranca">
             Segurança
           </label>
-          <input type="number" name="seguranca"/>
+          <input 
+            type="number" 
+            id="seguranca"
+            {...register("seguranca")}
+          />
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="cei">
             CEI
           </label>
-          <input type="text" name="cei"/>
+          <input 
+            type="text" 
+            id="cei"
+            {...register("cei")}
+          />
         </InputContainer>
 
         <InputContainer size="100%">
           <label htmlFor="email">
             Email
           </label>
-          <input type="email" name="email" required/>
+          <input 
+            required
+            type="email" 
+            id="email"
+            {...register("email")} 
+          />
         </InputContainer>
 
         <InputContainer size="medio">
           <label htmlFor="telefone">
             Telefone
           </label>
-          <input type="number" name="telefone"/>
+          <input 
+            type="number" 
+            id="telefone"
+            {...register("telefone")}
+          />
         </InputContainer>
 
         <InputContainer size="medio">
           <label htmlFor="celular">
             Celular
           </label>
-          <input type="number" name="celular"/>
+          <input 
+            type="number" 
+            id="celular"
+            {...register("celular")}
+          />
         </InputContainer>
       </DadosPessoais>
 
@@ -119,19 +205,33 @@ export function PessoaFisica() {
           <label htmlFor="cep">
             CEP
           </label>
-          <input type="number" name="cep" required/>
+          <input 
+            required
+            type="number" 
+            id="cep" 
+            {...register("cep")}
+          />
         </InputContainer>
 
         <InputContainer size="medio">
           <label htmlFor="cidade">
             Cidade
           </label>
-          <input type="text" name="cidade" required/>
+          <input 
+            required
+            type="text" 
+            id="cidade" 
+            {...register("cidade")}
+          />
         </InputContainer>
 
         <InputContainer size="40%">
           <label htmlFor="UF">UF</label>
-          <select name="UF" required>
+          <select 
+            required
+            id="UF" 
+            {...register("UF")}
+          >
             {
               unidadeFederativa.map((item, index) => (
                 <option key={index} value={item.uf}>{item.uf}</option>
@@ -144,37 +244,72 @@ export function PessoaFisica() {
           <label htmlFor="endereco">
             Endereço
           </label>
-          <input type="text" name="endereco" required/>
+          <input 
+            required
+            type="text" 
+            id="endereco" 
+            {...register("endereco")}
+          />
         </InputContainer>
 
         <InputContainer size='50%'>
           <label htmlFor='numero'>
             Número
           </label>
-          <input type="number" name='numero' required/>
+          <input 
+            required
+            type="number" 
+            id='numero' 
+            {...register("celular")}
+          />
         </InputContainer>
 
         <InputContainer size="medio">
           <label htmlFor="complemento">
             Complemento
           </label>
-          <input type="text" name="complemento"/>
+          <input 
+            type="text" 
+            id="complemento"
+            {...register("complemento")}
+          />
         </InputContainer>
 
         <InputContainer size="grande">
           <label htmlFor="bairro">
             Bairro
           </label>
-          <input type="text" name="bairro" required/>
+          <input 
+            required
+            type="text" 
+            id="bairro" 
+            {...register("celular")}
+          />
         </InputContainer>        
 
         <InputContainer size='100%'>
           <label htmlFor='Observação'>
             Observação
           </label>
-          <textarea name="Observação"></textarea>           
+          <textarea 
+            id="observacao"
+            {...register("observacao")}
+          ></textarea>           
         </InputContainer> 
       </DadosResidenciais>
+
+      <ContainerButton>
+        <Link to="/">
+          <button type="submit" name="salvar">
+            Salvar
+          </button>
+        </Link>
+        <Link to="/">
+          <button name="cancelar">
+            Cancelar
+          </button>
+        </Link>
+      </ContainerButton>
 
     </FormularioContainer>
   );

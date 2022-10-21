@@ -3,10 +3,11 @@ import { Header } from './components/Header';
 import { TabelaClientes } from './components/TabelaClientes';
 import { GlobalStyle } from './styles/global';
 import {  BrowserRouter, Routes, Route } from "react-router-dom";
+import { ClientesProvider } from './ClientsContext';
 
 export default function App() {
   return (
-    <>
+    <ClientesProvider>
       <BrowserRouter>
         <GlobalStyle />
         <Header />
@@ -15,6 +16,6 @@ export default function App() {
           <Route path='novoCliente' element={ <Formulario /> } />          
         </Routes>
       </BrowserRouter>
-    </>
+    </ClientesProvider>
   );
 }
