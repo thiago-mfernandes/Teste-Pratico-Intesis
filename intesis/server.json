@@ -1,0 +1,36 @@
+{
+  "clientes": [
+    {
+      "id": "01",
+      "razaoSocial": "Thiago",
+      "cnpj": "000.000.000/0000-00",
+      "email": "teste@gmail.com",
+      "telefone": "193434-0000",
+      "celular": "19987654321"
+    },
+    {
+      "id": "02",
+      "razaoSocial": "Joao",
+      "nome": "Joao",
+      "ativo": false,
+      "cnpj": "01123123000101",
+      "contribuinte": "on",
+      "incEstadual": "546456",
+      "incMunicipal": "joao@gmail.com",
+      "nomeResponsavel": "Joao",
+      "cpf": "435435",
+      "nasciResponsavel": "2022-09-28",
+      "telefone": "1934340000",
+      "celular": "19987654321",
+      "emailResponsavel": "joao@gmail.com",
+      "cep": "trgfghgf",
+      "tipoLogradouro": "fsdgfg",
+      "cidade": "gfhfgh",
+      "UF": "MS",
+      "endereco": "fdghgfh",
+      "numero": "456",
+      "complemento": "dfgdfg",
+      "bairro": "dfsgfdg"
+    }
+  ]
+}

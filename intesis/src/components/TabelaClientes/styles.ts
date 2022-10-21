@@ -16,11 +16,20 @@ export const Table = styled.table`
     padding: 0.25rem 0.5rem;
   }
 
+  thead th[id="id"] {
+    width: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   td {
     padding: 0.25rem 0.5rem;
     border: 0;
     color: var(--textTable);
     border-bottom: 1px solid var(--textTable);
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   td button {

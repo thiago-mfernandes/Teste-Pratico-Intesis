@@ -1,15 +1,18 @@
 import { Table, Container, BotaoAdicionar, ContainerSearch } from './styles';
 import { PencilSimple, UserMinus, ArrowUp, PlusCircle, MagnifyingGlass } from 'phosphor-react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ClientesContext } from '../../ClientsContext';
 import { Clientes } from '../../ClientsContext'
 
 
 export function TabelaClientes() {
+  
+  const { clientes, deletarCliente, editarCliente } = useContext(ClientesContext);  
+  console.log("Tabela Clientes state =>", clientes);
 
-  const { clientes } = useContext(ClientesContext);
-  console.log(clientes);
+  const[busca, setBusca] = useState('');
+  console.log("Tabela Clientes state busca =>", busca);
 
   return (
     <>
@@ -25,14 +28,19 @@ export function TabelaClientes() {
           <label htmlFor="search">
             <MagnifyingGlass color='#2873B6' size={20}/>
           </label>
-          <input type="search" id="search"/>
+          <input 
+            type="search" 
+            id="search"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+          />
         </ContainerSearch>  
       </Container>
 
       <Table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th id="id">ID</th>
             <th>Nome/Razão Social <ArrowUp size={18}/></th>
             <th>CPF/CNPJ</th>
             <th>Email</th>
@@ -44,21 +52,30 @@ export function TabelaClientes() {
         </thead>
         <tbody>
           {
-            clientes.map((cliente: Clientes) => (
+            // eslint-disable-next-line array-callback-return
+            clientes.filter((value) => {
+              if(busca === '') {
+                //retorna todo o mock
+                return value;
+              } else if(value.razaoSocial.includes(busca)){
+                //retorna somente o que der match
+                return value;
+              }
+            }).map((cliente: Clientes) => (
               <tr key={cliente.id}>
-                <td>{cliente.id}</td>
+                <td id="id">{cliente.id}</td>
                 <td>{cliente.razaoSocial !== '' ? cliente.razaoSocial : cliente.nome}</td>
                 <td>{cliente.cnpj !== '' ? cliente.cnpj : cliente.cpf}</td>
                 <td>{cliente.email}</td>
                 <td>{cliente.telefone}</td>
                 <td>{cliente.celular}</td>
                 <td>
-                  <button>
+                  <button onClick={() => editarCliente(cliente.id)}>
                     <PencilSimple color='#2873B6'/>
                   </button>
                 </td>
                 <td>
-                  <button>
+                  <button onClick={() => deletarCliente(cliente.id)}>
                     <UserMinus color='#EA3F7A'/>
                   </button>
                 </td>

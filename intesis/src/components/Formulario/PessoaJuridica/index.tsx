@@ -8,19 +8,17 @@ import unidadeFederativa from '../../../data/unidadeFederative.json';
 import tipoLogradouro from '../../../data/tipoLogradouro.json';
 
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import { ClientesContext } from '../../../ClientsContext';
 import { useContext } from 'react';
 
 
 export function PessoaJuridica() {
 
-  const { register, handleSubmit, formState: { errors }} = useForm();
-  const { clientes, createClient } = useContext(ClientesContext);
+  const { register, handleSubmit } = useForm();
+  const { adicionarCliente } = useContext(ClientesContext);
 
   async function onSubmit(data: Object) {
-    await createClient(data);
-    console.log("passou", data);
+    await adicionarCliente(data);
   }
 
   return (
@@ -320,21 +318,13 @@ export function PessoaJuridica() {
       </DadosPessoais> 
 
       <ContainerButton>  
-
-        <Link to='/'>
-          <button type="submit" name="salvar">
-            Salvar
-          </button>
-        </Link>         
-        <Link to='/'>
-          <button name="cancelar">
-            Cancelar
-          </button>
-        </Link>
-        
-      </ContainerButton>
-      
-      
+        <button type="submit" name="salvar">
+          Salvar
+        </button>
+        <button name="cancelar">
+          Cancelar
+        </button>
+      </ContainerButton>  
     </FormularioContainer>
   );
 }

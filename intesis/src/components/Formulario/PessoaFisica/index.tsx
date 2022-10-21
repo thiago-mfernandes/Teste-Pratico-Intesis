@@ -8,22 +8,19 @@ import {
 import estadoCivil from "../../../data/estadoCivil.json";
 import unidadeFederativa from "../../../data/unidadeFederative.json";
 
-import { Link } from "react-router-dom";
-
 import { useForm } from 'react-hook-form';
-
 import { useContext } from "react";
 import { ClientesContext } from "../../../ClientsContext";
 
+
 export function PessoaFisica() {
 
-  const { register, handleSubmit, formState: { errors }} = useForm();
-  const { clientes, createClient } = useContext(ClientesContext);
+  const { register, handleSubmit } = useForm();
+  const { adicionarCliente } = useContext(ClientesContext);
 
   async function onSubmit(data: Object) {
-    await createClient(data);    
+    await adicionarCliente(data);    
   }
-
 
   return(
     <FormularioContainer 
@@ -299,16 +296,12 @@ export function PessoaFisica() {
       </DadosResidenciais>
 
       <ContainerButton>
-        <Link to="/">
-          <button type="submit" name="salvar">
-            Salvar
-          </button>
-        </Link>
-        <Link to="/">
-          <button name="cancelar">
-            Cancelar
-          </button>
-        </Link>
+        <button type="submit" name="salvar">
+          Salvar
+        </button>
+        <button name="cancelar">
+          Cancelar
+        </button>
       </ContainerButton>
 
     </FormularioContainer>

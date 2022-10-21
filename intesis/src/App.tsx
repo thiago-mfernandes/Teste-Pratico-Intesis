@@ -7,15 +7,15 @@ import { ClientesProvider } from './ClientsContext';
 
 export default function App() {
   return (
-    <ClientesProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <ClientesProvider>
         <GlobalStyle />
         <Header />
         <Routes>
           <Route path='/' element={ <TabelaClientes /> }/>
           <Route path='novoCliente' element={ <Formulario /> } />          
         </Routes>
-      </BrowserRouter>
-    </ClientesProvider>
+      </ClientesProvider>
+    </BrowserRouter>
   );
 }

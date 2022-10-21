@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import { PessoaFisica } from "./PessoaFisica";
+import { ChangeEvent, useState } from 'react';
+import { PessoaFisica } from './PessoaFisica';
 import { PessoaJuridica } from './PessoaJuridica/index';
 
 import { GrupoEscolha, Titulo } from './styles';
@@ -19,8 +19,7 @@ export function Formulario() {
 
   return (
     <>
-      <Titulo>Adicionar Novo Cliente</Titulo>
-      
+      <Titulo>Adicionar Novo Cliente</Titulo>      
       <GrupoEscolha>
         <legend>Tipo</legend>
         <div>
@@ -46,7 +45,6 @@ export function Formulario() {
           </label>
         </div>
       </GrupoEscolha>
-
       {
         formType === FORM_TYPES.PJ
           ? <PessoaJuridica />
