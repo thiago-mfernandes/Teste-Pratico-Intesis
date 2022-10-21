@@ -1,128 +1,181 @@
+import { DadosPessoais, DadosResidenciais, FormularioContainer, InputContainer } from "./styles";
+import estadoCivil from "../../../data/estadoCivil.json";
+import unidadeFederativa from "../../../data/unidadeFederative.json";
+
 export function PessoaFisica() {
   return(
-    <form>
-      <p>formulario de pessoa fisica</p>
-      <div>
-        <label>
-          <input type="text"/>
-          Nome Completo
-        </label>
+    <FormularioContainer>
 
-        <label>
-          <input type="text"/>
-          Apelido
-        </label>
+      <DadosPessoais>
+        <InputContainer size="grande">
+          <label htmlFor="nome">
+            Nome Completo
+          </label>
+          <input type="text" name="nome" required/>
+        </InputContainer>
 
-        <label>
-          <input type="number" placeholder='000.000.000-00'/>
-          CPF
-        </label>
+        <InputContainer size="grande">
+          <label htmlFor="apelido">
+            Apelido
+          </label>
+          <input type="text" name="apelido"/>
+        </InputContainer>
 
-        <label>
-          <input type="date" placeholder='00/00/0000'/>
-          Data Nasc. Responsável
-        </label>
+        <InputContainer size="pequeno">
+          <label htmlFor="cpf">
+            CPF
+          </label>
+          <input type="number" placeholder="000.000.000-00" name="cpf" required/>
+        </InputContainer>
 
-        <select name="Estado Civil">
-          <optgroup>
-            <option value="">Solteiro</option>
-            <option value="">Casado</option>
-          </optgroup>
-        </select>
+        <InputContainer size="pequeno">
+          <label htmlFor="nascimentoResponsavel">
+            Data Nasc. Responsável
+          </label>
+          <input type="date" placeholder="00/00/0000" name="nascimentoResponsavel"/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          RG/RNE
-        </label>
+        <InputContainer size="40%">
+          <label htmlFor="Estado Civil">Estado Civil</label>
+          <select name="Estado Civil" required>
+            {
+              estadoCivil.map((item, index) => (
+                <option key={index} value={item.estado}>{item.estado}</option>
+              ))
+            }
+          </select>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Órgão Emissor
-        </label>
+        <InputContainer size="pequeno">
+          <label htmlFor="rg">
+            RG/RNE
+          </label>
+          <input type="text" name="rg" required/>
+        </InputContainer>
 
-        <select name="UF">
-          <optgroup>
-            <option value="">AM</option>
-            <option value="">AC</option>
-          </optgroup>
-        </select>
+        <InputContainer size="pequeno">
+          <label htmlFor="orgaoEmissor">
+            Órgão Emissor
+          </label>
+          <input type="text" name="orgaoEmissor"/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          CNH
-        </label>
+        <InputContainer size="40%">
+          <label htmlFor="UF">UF</label>
+          <select name="UF" required>
+            {
+              unidadeFederativa.map((item, index) => (
+                <option key={index} value={item.uf}>{item.uf}</option>
+              ))
+            }
+          </select>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Segurança
-        </label>
+        <InputContainer size="pequeno">
+          <label htmlFor="cnh">
+            CNH
+          </label>
+          <input type="number" name="cnh"/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          CEI
-        </label>
+        <InputContainer size="pequeno">
+          <label htmlFor="seguranca">
+            Segurança
+          </label>
+          <input type="number" name="seguranca"/>
+        </InputContainer>
 
-        <label>
-          <input type="email"/>
-          Email
-        </label>
+        <InputContainer size="pequeno">
+          <label htmlFor="cei">
+            CEI
+          </label>
+          <input type="text" name="cei"/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Telefone
-        </label>
+        <InputContainer size="100%">
+          <label htmlFor="email">
+            Email
+          </label>
+          <input type="email" name="email" required/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Celular
-        </label>
-      </div>
+        <InputContainer size="medio">
+          <label htmlFor="telefone">
+            Telefone
+          </label>
+          <input type="number" name="telefone"/>
+        </InputContainer>
 
-      <div>
-        <label>
-          <input type="number"/>
-          CEP
-        </label>
+        <InputContainer size="medio">
+          <label htmlFor="celular">
+            Celular
+          </label>
+          <input type="number" name="celular"/>
+        </InputContainer>
+      </DadosPessoais>
 
-        <label>
-          <input type="text"/>
-          Cidade
-        </label>
+      <DadosResidenciais>
+        <InputContainer size="pequeno">
+          <label htmlFor="cep">
+            CEP
+          </label>
+          <input type="number" name="cep" required/>
+        </InputContainer>
 
-        <select name="UF">
-          <optgroup>
-            <option value="">AM</option>
-            <option value="">AC</option>
-          </optgroup>
-        </select>
+        <InputContainer size="medio">
+          <label htmlFor="cidade">
+            Cidade
+          </label>
+          <input type="text" name="cidade" required/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Endereço
-        </label>
+        <InputContainer size="40%">
+          <label htmlFor="UF">UF</label>
+          <select name="UF" required>
+            {
+              unidadeFederativa.map((item, index) => (
+                <option key={index} value={item.uf}>{item.uf}</option>
+              ))
+            }
+          </select>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Número
-        </label>
+        <InputContainer size="grande">
+          <label htmlFor="endereco">
+            Endereço
+          </label>
+          <input type="text" name="endereco" required/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Número
-        </label>
+        <InputContainer size='50%'>
+          <label htmlFor='numero'>
+            Número
+          </label>
+          <input type="number" name='numero' required/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Complemento
-        </label>
+        <InputContainer size="medio">
+          <label htmlFor="complemento">
+            Complemento
+          </label>
+          <input type="text" name="complemento"/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Bairro
-        </label>
+        <InputContainer size="grande">
+          <label htmlFor="bairro">
+            Bairro
+          </label>
+          <input type="text" name="bairro" required/>
+        </InputContainer>        
 
-        <textarea name="Observação"></textarea>
-      </div>
-    </form>
+        <InputContainer size='100%'>
+          <label htmlFor='Observação'>
+            Observação
+          </label>
+          <textarea name="Observação"></textarea>           
+        </InputContainer> 
+      </DadosResidenciais>
+
+    </FormularioContainer>
   );
 }

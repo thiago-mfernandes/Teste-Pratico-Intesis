@@ -47,6 +47,10 @@ export const BotaoAdicionar = styled.button`
   margin-left: 2rem;
   align-self: flex-start;
   padding: 0 1rem;
+  transition: background-color .1s;
+  &:hover {
+    background-color: var(--blue-light);
+  }
 
   & svg {
     margin: 0 0.5rem;

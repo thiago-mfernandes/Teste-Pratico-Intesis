@@ -1,0 +1,86 @@
+[
+  {
+    "content": "Razão Social",
+    "type": "text"
+  },
+  {
+    "content": "Nome Fantasia",
+    "type": "text"
+  },
+  {
+    "content": "Ativo",
+    "type": "checkbox",
+    "checked": true
+  },
+  {
+    "content": "CNPJ",
+    "type": "number",
+    "placeholder": "00.000.000/0000-00"
+  },
+  {
+    "content": "Contribuinte",
+    "type": "checkbox"
+  },
+  {
+    "content": "Insc. Estadual",
+    "type": "text"
+  },
+  {
+    "content": "Insc. Municipal",
+    "type": "text"
+  },
+  {
+    "content": "Nome do Responsável",
+    "type": "text"
+  },
+  {
+    "content": "CPF",
+    "type": "number",
+    "placeholder": "000.000.000-00"
+  },
+  {
+    "content": "Data Nasc. Responsável",
+    "type": "date",
+    "placeholder": "00/00/0000"
+  },
+  {
+    "content": "Telefone",
+    "type": "number"
+  },
+  {
+    "content": "Celular",
+    "type": "number"
+  },
+  {
+    "content": "Email Responsável",
+    "type": "email"
+  },
+  {
+    "content": "CEP",
+    "type": "number"
+  },
+  {
+    "content": "Cidade",
+    "type": "text"
+  },
+  {
+    "content": "Endereço",
+    "type": "text"
+  },
+  {
+    "content": "Cidade",
+    "type": "text"
+  },
+  {
+    "content": "Número",
+    "type": "number"
+  },
+  {
+    "content": "Complemento",
+    "type": "text"
+  },
+  {
+    "content": "Bairro",
+    "type": "text"
+  }
+]

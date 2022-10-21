@@ -27,8 +27,8 @@ export default function App() {
         </ContainerSearch>  
       </Container>
 
-      <TabelaClientes />
-      {/*<Formulario />*/}
+      {/*<TabelaClientes /> */}
+      <Formulario />
     </div>
   );
 }

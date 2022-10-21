@@ -2,11 +2,13 @@ import { ChangeEvent, useState } from "react";
 import { PessoaFisica } from "./PessoaFisica";
 import { PessoaJuridica } from './PessoaJuridica/index';
 
+import { GrupoEscolha, Titulo, ContainerButton } from './styles';
+
 export function Formulario() {
 
   const FORM_TYPES = {
-    PF: 'Pessoa física',
-    PJ: 'Pessoa jurídica'
+    PF: 'Pessoa Física',
+    PJ: 'Pessoa Jurídica'
   }
   
   const [formType, setFormType] = useState(FORM_TYPES.PJ);
@@ -17,46 +19,45 @@ export function Formulario() {
 
   return (
     <>
-      <h2>Adicionar Novo Cliente</h2>
-      <form action="">
-        
-        <fieldset>
-          <legend>Tipo</legend>
-          <div>
-            <label>
-              <input
-                type="radio"
-                name="form-type"
-                value={FORM_TYPES.PJ}
-                checked={formType === FORM_TYPES.PJ}
-                onChange={handleChangeFormType}
-              />
-              {FORM_TYPES.PJ}
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="form-type"
-                value={FORM_TYPES.PF}
-                checked={formType === FORM_TYPES.PF}
-                onChange={handleChangeFormType}
-              />
-              {FORM_TYPES.PF}
-            </label>
-          </div>
-        </fieldset>
-
-        {
-          formType === FORM_TYPES.PJ
-            ? <PessoaJuridica />
-            : <PessoaFisica />
-        }
-
+      <Titulo>Adicionar Novo Cliente</Titulo>
+      
+      <GrupoEscolha>
+        <legend>Tipo</legend>
         <div>
-          <button>Salvar</button>
-          <button>Cancelar</button>
+          <label>
+            <input
+              type="radio"
+              name="form-type"
+              value={FORM_TYPES.PJ}
+              checked={formType === FORM_TYPES.PJ}
+              onChange={handleChangeFormType}
+            />
+            {FORM_TYPES.PJ}
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="form-type"
+              value={FORM_TYPES.PF}
+              checked={formType === FORM_TYPES.PF}
+              onChange={handleChangeFormType}
+            />
+            {FORM_TYPES.PF}
+          </label>
         </div>
-      </form>
+      </GrupoEscolha>
+
+      {
+        formType === FORM_TYPES.PJ
+          ? <PessoaJuridica />
+          : <PessoaFisica />
+      }
+
+      <ContainerButton>
+        <button type="submit" name="salvar">Salvar</button>
+        <button name="cancelar">Cancelar</button>
+      </ContainerButton>
+      
     </>
   );
 }

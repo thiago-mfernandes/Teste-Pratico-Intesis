@@ -1,110 +1,198 @@
+import { DadosEmpresariais, DadosPessoais, FormularioContainer, InputContainer } from './styles';
+
+import unidadeFederativa from '../../../data/unidadeFederative.json';
+import tipoLogradouro from '../../../data/tipoLogradouro.json';
+import { GrupoEscolha } from '../styles';
+
 export function PessoaJuridica() {
+
+  
   return (
-    <form>
-      <p>formulario de pessoa juridica</p>
-      <div>          
-        <label>
-          <input type="text" />
-          Razão Social
-        </label>
-        <label>
-          <input type="text" />
-          Nome Fantasia
-        </label>
-        <label>
-          <input type="checkbox" checked/>
-          Ativo
-        </label>
-        <label>
-          <input type="number" placeholder='00.000.000/0000-00'/>
-          CNPJ
-        </label>
-        <label>
-          <input type="checkbox" />
-          <input type="checkbox" />
-          Contribuinte
-        </label>
-        <label>
-          <input type="text"/>
-          Insc. Estadual
-        </label>
-        <label>
-          <input type="text"/>
-          Insc. Municipal
-        </label>
-      </div>
+    <FormularioContainer>
 
-      <div>
-        <label>
-          <input type="text"/>
-          Nome do Responsável
-        </label>
+      <DadosEmpresariais>  
+        <InputContainer size='grande'>
+          <label htmlFor='razaoSocial'>
+            Razão Social
+          </label>
+          <input type="text" name='razaoSocial' required/>
+        </InputContainer>
 
-        <label>
-          <input type="number" placeholder='000.000.000-00'/>
-          CPF
-        </label>
+        <InputContainer size='grande'>
+          <label htmlFor='nomeFantasia'>
+            Nome Fantasia
+          </label>
+          <input type="text" name='nomeFantasia' required/>
+        </InputContainer>
 
-        <label>
-          <input type="date" placeholder='00/00/0000'/>
-          Data Nasc. Responsável
-        </label>
+        <InputContainer size='' direction='row' align='flex-end'>
+          <input type="checkbox" name='ativo'/>
+          <label htmlFor='ativo'>
+            Ativo
+          </label>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Telefone
-        </label>
+        <InputContainer size='medio'>
+          <label htmlFor='cnpj'>
+            CNPJ
+          </label>
+          <input type="number" placeholder='00.000.000/0000-00' name='cnpj' required/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Celular
-        </label>
+        <InputContainer size='60%' align='flex-start'>
+          <GrupoEscolha>
+            <legend>Contruibuinte</legend>
 
-        <label>
-          <input type="email"/>
-          Email Responsável
-        </label>
+            <label htmlFor="sim">Sim</label>
+            <input type="radio" name='contribuinte'/>
 
-        <label>
-          <input type="number"/>
-          CEP
-        </label>
+            <label htmlFor="nao">Não</label>
+            <input type="radio" name='contribuinte' checked/>
+          </GrupoEscolha>
+        </InputContainer>        
 
-        <label>
-          <input type="text"/>
-          Cidade
-        </label>
+        <InputContainer size='medio'>
+          <label htmlFor='incEstadual'>
+            Insc. Estadual
+          </label>
+          <input type="text" name='incEstadual'/>
+        </InputContainer>
 
-        <select name="UF">
-          <optgroup>
-            <option value="">AM</option>
-            <option value="">AC</option>
-          </optgroup>
-        </select>
+        <InputContainer size='medio'>
+          <label htmlFor='incMunicipal'>
+            Insc. Municipal
+          </label>
+          <input type="text" name='incMunicipal'/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Endereço
-        </label>
+        <InputContainer size='grande'>
+          <label htmlFor='emailResponsavel'>
+            Email Responsável
+          </label>
+          <input type="email"name='emailResponsavel'/>
+        </InputContainer>
 
-        <label>
-          <input type="number"/>
-          Número
-        </label>
+      </DadosEmpresariais>
 
-        <label>
-          <input type="text"/>
-          Complemento
-        </label>
+      <DadosPessoais>        
+        <InputContainer size='100%'>
+          <label htmlFor='nomeResponsavel'>
+            Nome do Responsável
+          </label>
+          <input type="text" name='nomeResponsavel'/>
+        </InputContainer>
 
-        <label>
-          <input type="text"/>
-          Bairro
-        </label>
+        <InputContainer size='medio'>
+          <label htmlFor='cpf'>
+            CPF
+          </label>
+          <input type="number" placeholder='000.000.000-00' name='cpf'/>
+        </InputContainer>
 
-        <textarea name="Observação"></textarea>
-        
-      </div> 
-    </form>
+        <InputContainer size='60%'>
+          <label htmlFor='nasciResponsavel'>
+            Data Nasc. Responsável
+          </label>
+          <input type="date" placeholder='00/00/0000'name='nasciResponsavel'/>
+        </InputContainer>
+
+        <InputContainer size='pequeno'>
+          <label htmlFor='telefone'>
+            Telefone
+          </label>
+          <input type="number" name='telefone'/>
+        </InputContainer>
+
+          
+        <InputContainer size='pequeno'>
+          <label htmlFor=''>
+            Celular
+          </label>
+          <input type="number" name='celular'/>
+        </InputContainer>
+
+        <InputContainer size='grande'>
+          <label htmlFor='emailResponsavel'>
+            Email Responsável
+          </label>
+          <input type="email"name='emailResponsavel'/>
+        </InputContainer>
+
+        <InputContainer size='pequeno'>
+          <label htmlFor='cep'>
+            CEP
+          </label>
+          <input type="text" name='cep'/>
+        </InputContainer>
+
+        <InputContainer size='pequeno'>
+          <label htmlFor='tipoLogradouro'>
+            Tipo Logradouro
+          </label>
+          <select name="Tipo Logradouro" required>
+            {
+              tipoLogradouro.map((item, index) => (
+                <option key={index} value={item.tipo}>{item.tipo}</option>
+              ))
+            }
+          </select>
+        </InputContainer>
+
+        <InputContainer size='grande'>
+          <label htmlFor='cidade'>
+            Cidade
+          </label>
+          <input type="text" name='cidade' required/>
+        </InputContainer>
+
+
+        <InputContainer size='pequeno'>
+          <label htmlFor="UF">UF</label>
+          <select name="UF" required>
+            {
+              unidadeFederativa.map((item, index) => (
+                <option key={index} value={item.uf}>{item.uf}</option>
+              ))
+            }
+          </select>
+        </InputContainer>
+
+        <InputContainer size='grande'>
+          <label htmlFor='endereco'>
+            Endereço
+          </label>
+          <input type="text" name='endereco' required/>
+        </InputContainer>
+
+        <InputContainer size='50%'>
+          <label htmlFor='numero'>
+            Número
+          </label>
+          <input type="number" name='numero' required/>
+        </InputContainer>
+
+        <InputContainer size='pequeno'>
+          <label htmlFor='complemento'>
+            Complemento
+          </label>
+          <input type="text" name='complemento'/>
+        </InputContainer>
+
+        <InputContainer size='grande'>
+          <label htmlFor='bairro'>
+            Bairro
+          </label>
+          <input type="text" name='bairro' required/>
+        </InputContainer>
+
+        <InputContainer size='100%'>
+          <label htmlFor='bairro'>
+          Observação
+          </label>
+          <textarea name="Observação"></textarea>           
+        </InputContainer>        
+      </DadosPessoais> 
+      
+    </FormularioContainer>
   );
 }

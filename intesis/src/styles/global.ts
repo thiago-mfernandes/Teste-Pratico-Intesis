@@ -7,8 +7,13 @@ export const GlobalStyle = createGlobalStyle`
     --background-button: #EAF1F8;
 
     --green: #27CFBD;
+    --green-light: rgba(39, 207, 189, 0.7);
+
     --red: #EA3F7A;
+    --red-light: rgba(234, 63, 122, 0.7);
+
     --blue: #2873B6;
+    --blue-light: rgba(40, 115, 182, 0.7);
     
     --textLabel: #121214; //texto da label
     --textTable: #929292; //texto da tabela
@@ -41,6 +46,10 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+  }
+
+  input {
+    outline: none;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
