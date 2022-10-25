@@ -13,7 +13,8 @@ export default function App() {
         <Header />
         <Routes>
           <Route path='/' element={ <TabelaClientes /> }/>
-          <Route path='novoCliente' element={ <Formulario /> } />          
+          <Route path='novoCliente' element={ <Formulario /> } />   
+          <Route path='editarCliente/:id' element={ <Formulario /> } />         
         </Routes>
       </ClientesProvider>
     </BrowserRouter>

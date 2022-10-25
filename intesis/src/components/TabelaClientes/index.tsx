@@ -1,6 +1,6 @@
 import { Table, Container, BotaoAdicionar, ContainerSearch } from './styles';
 import { PencilSimple, UserMinus, ArrowUp, PlusCircle, MagnifyingGlass } from 'phosphor-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from "react-router-dom";
 import { useContext, useState } from 'react';
 import { ClientesContext } from '../../ClientsContext';
 import { Clientes } from '../../ClientsContext'
@@ -9,10 +9,12 @@ import { Clientes } from '../../ClientsContext'
 export function TabelaClientes() {
   
   const { clientes, deletarCliente, editarCliente } = useContext(ClientesContext);  
-  console.log("Tabela Clientes state =>", clientes);
+  //console.log("Tabela Clientes state =>", clientes);
 
   const[busca, setBusca] = useState('');
-  console.log("Tabela Clientes state busca =>", busca);
+  //console.log("Tabela Clientes state busca =>", busca);
+
+  let navigate = useNavigate();
 
   return (
     <>
@@ -64,14 +66,22 @@ export function TabelaClientes() {
             }).map((cliente: Clientes) => (
               <tr key={cliente.id}>
                 <td id="id">{cliente.id}</td>
-                <td>{cliente.razaoSocial !== '' ? cliente.razaoSocial : cliente.nome}</td>
-                <td>{cliente.cnpj !== '' ? cliente.cnpj : cliente.cpf}</td>
+                {/**
+                 * se razao social estiver preenchido - mostrar razao social
+                 */}
+                <td>{cliente.razaoSocial ? cliente.razaoSocial : cliente.nome}</td>
+                <td>{cliente.cnpj ? cliente.cnpj : cliente.cpf}</td>
                 <td>{cliente.email}</td>
                 <td>{cliente.telefone}</td>
                 <td>{cliente.celular}</td>
                 <td>
-                  <button onClick={() => editarCliente(cliente.id)}>
-                    <PencilSimple color='#2873B6'/>
+                  <button 
+                    onClick={() => editarCliente(cliente.id)}
+                  >                    
+                    <PencilSimple 
+                      color='#2873B6' 
+                      onClick={() => {navigate(`/editarCliente/${cliente.id}`)}}>
+                    </PencilSimple>
                   </button>
                 </td>
                 <td>

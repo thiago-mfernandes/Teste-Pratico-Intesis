@@ -35,8 +35,9 @@ interface ClienteContextProviderProps {
 
 interface CLientesContextProps {
   clientes: Clientes[];
+  cliente: any;
   adicionarCliente: (cliente: Object) => Promise<void>;
-  deletarCliente: (id: string) => Promise<void>;
+  deletarCliente: (id: string) => void;
   editarCliente: (id: string) => Promise<void>;
 }
 
@@ -46,12 +47,13 @@ export function ClientesProvider({ children }: ClienteContextProviderProps) {
 
   const navigate = useNavigate();
   const [clientes, setClientes] = useState<Clientes[]>([]);
+  const [cliente, setCliente] = useState({});
 
-
+  //listar clientes na tabela
   useEffect(() => {
     api.get('/clientes')
       .then((response) => setClientes(response.data))
-  }, [])
+  }, []) 
 
 
   async function adicionarCliente(cliente: Object) {
@@ -60,6 +62,8 @@ export function ClientesProvider({ children }: ClienteContextProviderProps) {
       id: uuidv4(),
       ...cliente
     }
+
+    //console.log(dataForm);
   
     await api
       .post('/clientes', dataForm)
@@ -71,8 +75,8 @@ export function ClientesProvider({ children }: ClienteContextProviderProps) {
     navigate("/");
   }
 
-  async function deletarCliente(id: string) {
-    await api.delete(`/clientes/${id}`)
+  function deletarCliente(id: string) {
+    api.delete(`/clientes/${id}`)
     .then(() => {
       api.get('/clientes')
         .then(response => setClientes(response.data))
@@ -80,20 +84,29 @@ export function ClientesProvider({ children }: ClienteContextProviderProps) {
   }
 
   async function editarCliente(id: string) {
-    await api.put(`/clientes/${id}`)
-      .then(() => {
-        api.get('/clientes')
-        .then(response => {
-          const clienteEdit = clientes.find(cliente => cliente.id === id);
-          //parado aqui, apenas pegando o id do cliente
-          console.log("ClientesContext function editarCliente =>", clienteEdit);
-        })
-      })
+
+    const { data } = await api.get(`/clientes/${id}`);
+    setCliente(data);
+    
+
+
+
+
+    //console.log(request);
+    // await api.put(`/editarCliente/${id}`)
+    //   .then(() => {
+    //     api.get('/clientes')
+    //     .then(response => {
+    //       const clienteEdit = clientes.find(cliente => cliente.id === id);
+    //       //parado aqui, apenas pegando o id do cliente
+    //       console.log("ClientesContext function editarCliente =>", clienteEdit);
+    //     })
+    //   })
 
   }
 
   return (
-    <ClientesContext.Provider value={{ clientes, adicionarCliente, deletarCliente, editarCliente }}>
+    <ClientesContext.Provider value={{ clientes, cliente, adicionarCliente, deletarCliente, editarCliente }}>
       {children}
     </ClientesContext.Provider>
   );

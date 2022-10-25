@@ -62,11 +62,13 @@ export const InputContainer = styled.div<InputContainerProps>`
     height: 2rem;
     width: 100%;
     padding: 4px 8px;
+    margin-bottom: 0.5rem;
   }
 
   input[name="ativo"] {
     margin-left: 4rem;
     margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   fieldset {

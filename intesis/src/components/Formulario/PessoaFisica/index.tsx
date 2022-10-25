@@ -7,16 +7,24 @@ import {
 
 import estadoCivil from "../../../data/estadoCivil.json";
 import unidadeFederativa from "../../../data/unidadeFederative.json";
+import tipoLogradouro from '../../../data/tipoLogradouro.json';
 
 import { useForm } from 'react-hook-form';
 import { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { ClientesContext } from "../../../ClientsContext";
+import { Erro } from '../Erro';
+
+import InputMask from 'react-input-mask';
 
 
 export function PessoaFisica() {
 
-  const { register, handleSubmit } = useForm();
-  const { adicionarCliente } = useContext(ClientesContext);
+  const { adicionarCliente, cliente } = useContext(ClientesContext);
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: cliente
+  });
 
   async function onSubmit(data: Object) {
     await adicionarCliente(data);    
@@ -33,11 +41,12 @@ export function PessoaFisica() {
             Nome Completo
           </label>
           <input 
-            required
+            defaultValue={cliente.nome}
             id="nome" 
-            {...register("nome")}
+            {...register("nome", { required: true})}
             type="text" 
           />
+          {errors.nome && <Erro/>}
         </InputContainer>
 
         <InputContainer size="grande">
@@ -55,21 +64,23 @@ export function PessoaFisica() {
           <label htmlFor="cpf">
             CPF
           </label>
-          <input 
-            required
-            type="number" 
+          <InputMask
+            mask="999.999.999-99" 
+            type="text" 
             placeholder="000.000.000-00" 
             id="cpf" 
-            {...register("cpf")}
+            {...register("cpf", { required: true})}
           />
+          {errors.cpf && <Erro/>}
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="nascimentoResponsavel">
             Data Nasc. Responsável
           </label>
-          <input 
-            type="date" 
+          <InputMask 
+            mask="99/99/9999"
+            type="text" 
             placeholder="00/00/0000" 
             id="nascimentoResponsavel"
             {...register("nascimentoResponsavel")}
@@ -79,7 +90,7 @@ export function PessoaFisica() {
         <InputContainer size="40%">
           <label htmlFor="EstadoCivil">Estado Civil</label>
           <select 
-              required
+
               id="EstadoCivil" 
               {...register("EstadoCivil")}
             >
@@ -95,12 +106,14 @@ export function PessoaFisica() {
           <label htmlFor="rg">
             RG/RNE
           </label>
-          <input 
-            required
+          <InputMask  
+            mask="99.999.999-*" 
+            placeholder="00.000.000-0"
             type="text" 
             id="rg" 
-            {...register("rg")}
+            {...register("rg", { required: true})}
           />
+          {errors.rg && <Erro/>}
         </InputContainer>
 
         <InputContainer size="pequeno">
@@ -117,9 +130,8 @@ export function PessoaFisica() {
         <InputContainer size="40%">
           <label htmlFor="UF">UF</label>
           <select 
-            required
             id="UF"
-            {...register("UF")}
+            {...register("UF", { required: true})}
           >
             {
               unidadeFederativa.map((item, index) => (
@@ -127,14 +139,17 @@ export function PessoaFisica() {
               ))
             }
           </select>
+          {errors.UF && <Erro/>}
         </InputContainer>
 
         <InputContainer size="pequeno">
           <label htmlFor="cnh">
             CNH
           </label>
-          <input 
-            type="number" 
+          <InputMask  
+            mask="99999999999" 
+            placeholder="00000000000"
+            type="text" 
             id="cnh"
             {...register("cnh")}
           />
@@ -156,7 +171,7 @@ export function PessoaFisica() {
             CEI
           </label>
           <input 
-            type="text" 
+            type="number" 
             id="cei"
             {...register("cei")}
           />
@@ -167,19 +182,21 @@ export function PessoaFisica() {
             Email
           </label>
           <input 
-            required
             type="email" 
             id="email"
-            {...register("email")} 
+            {...register("email", { required: true})} 
           />
+          {errors.email && <Erro/>}
         </InputContainer>
 
         <InputContainer size="medio">
           <label htmlFor="telefone">
             Telefone
           </label>
-          <input 
-            type="number" 
+          <InputMask
+            mask="(99)9999-9999" 
+            placeholder="(00)0000-0000"
+            type="text" 
             id="telefone"
             {...register("telefone")}
           />
@@ -189,8 +206,10 @@ export function PessoaFisica() {
           <label htmlFor="celular">
             Celular
           </label>
-          <input 
-            type="number" 
+          <InputMask 
+            mask="(99)9 9999-9999" 
+            placeholder="(00)0 0000-0000"
+            type="text" 
             id="celular"
             {...register("celular")}
           />
@@ -202,12 +221,14 @@ export function PessoaFisica() {
           <label htmlFor="cep">
             CEP
           </label>
-          <input 
-            required
-            type="number" 
+          <InputMask
+            mask="99999-999" 
+            placeholder="00000-000" 
+            type="text" 
             id="cep" 
-            {...register("cep")}
+            {...register("cep", { required: true})}
           />
+          {errors.cep && <Erro/>}
         </InputContainer>
 
         <InputContainer size="medio">
@@ -215,19 +236,17 @@ export function PessoaFisica() {
             Cidade
           </label>
           <input 
-            required
             type="text" 
             id="cidade" 
-            {...register("cidade")}
+            {...register("cidade", { required: true})}
           />
         </InputContainer>
 
         <InputContainer size="40%">
           <label htmlFor="UF">UF</label>
           <select 
-            required
             id="UF" 
-            {...register("UF")}
+            {...register("UF", { required: true})}
           >
             {
               unidadeFederativa.map((item, index) => (
@@ -235,6 +254,24 @@ export function PessoaFisica() {
               ))
             }
           </select>
+          {errors.UF && <Erro/>}
+        </InputContainer>
+
+        <InputContainer size='pequeno'>
+          <label htmlFor='tipoLogradouro'>
+            Tipo Logradouro
+          </label>
+          <select 
+            id="tipoLogradouro" 
+            {...register("tipoLogradouro", { required: true})}
+          >
+            {
+              tipoLogradouro.map((item, index) => (
+                <option key={index} value={item.tipo}>{item.tipo}</option>
+              ))
+            }
+          </select>
+          {errors.tipoLogradouro && <Erro/>}
         </InputContainer>
 
         <InputContainer size="grande">
@@ -242,11 +279,11 @@ export function PessoaFisica() {
             Endereço
           </label>
           <input 
-            required
             type="text" 
             id="endereco" 
-            {...register("endereco")}
+            {...register("endereco", { required: true})}
           />
+          {errors.endereco && <Erro/>}
         </InputContainer>
 
         <InputContainer size='50%'>
@@ -254,11 +291,11 @@ export function PessoaFisica() {
             Número
           </label>
           <input 
-            required
             type="number" 
             id='numero' 
-            {...register("celular")}
+            {...register("celular", { required: true})}
           />
+          {errors.numero && <Erro/>}
         </InputContainer>
 
         <InputContainer size="medio">
@@ -277,11 +314,11 @@ export function PessoaFisica() {
             Bairro
           </label>
           <input 
-            required
             type="text" 
             id="bairro" 
-            {...register("celular")}
+            {...register("celular", { required: true})}
           />
+          {errors.bairro && <Erro/>}
         </InputContainer>        
 
         <InputContainer size='100%'>
@@ -299,9 +336,11 @@ export function PessoaFisica() {
         <button type="submit" name="salvar">
           Salvar
         </button>
-        <button name="cancelar">
-          Cancelar
-        </button>
+        <Link to="/">
+          <button type="reset" name="cancelar">
+            Cancelar
+          </button>
+        </Link>
       </ContainerButton>
 
     </FormularioContainer>
