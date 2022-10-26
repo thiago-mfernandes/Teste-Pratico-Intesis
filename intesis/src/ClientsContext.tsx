@@ -91,7 +91,7 @@ export function ClientesProvider({ children }: ClienteContextProviderProps) {
   }
 
   async function editarCliente(id: string, data: Object) {
-    console.log("inside context =>", data);
+    //console.log("inside context =>", data);
     await api.put(`/clientes/${id}`, data)
     .then(() => {
       api.get("/clientes")

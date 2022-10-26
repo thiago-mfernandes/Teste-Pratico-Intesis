@@ -10,7 +10,7 @@ import { Clientes } from "../../types";
 
 export function TabelaClientes() {
   
-  const { clientes, deletarCliente, obterClienteId } = useContext(ClientesContext); 
+  const { clientes, deletarCliente } = useContext(ClientesContext); 
   const[busca, setBusca] = useState("");
   
   let navigate = useNavigate();
@@ -58,7 +58,7 @@ export function TabelaClientes() {
               if(busca === "") {
                 //retorna todo o mock
                 return value;
-              } else if(value.razaoSocial.includes(busca)){
+              } else if(value.razaoSocial?.includes(busca) || value.nomeCompleto?.includes(busca)){
                 //retorna somente o que der match
                 return value;
               }
@@ -76,13 +76,9 @@ export function TabelaClientes() {
                 <td>
                   <button 
                     //esta funcao vai obter o id do cliente e no icone abaixo
-                    onClick={() => obterClienteId(cliente.id)}
+                    onClick={() => { navigate(`/editarCliente/${cliente.id}`) }}
                   >                    
-                    <PencilSimple 
-                      color="#2873B6" 
-                      //redirecionar para o formulario
-                      onClick={() => {navigate(`/editarCliente/${cliente.id}`)}}>
-                    </PencilSimple>
+                    <PencilSimple color="#2873B6" />
                   </button>
                 </td>
                 <td>

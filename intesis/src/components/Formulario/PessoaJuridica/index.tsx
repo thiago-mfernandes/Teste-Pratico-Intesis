@@ -20,7 +20,7 @@ export function PessoaJuridica() {
 
   const { id } = useParams();
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const { adicionarCliente, cliente, editarCliente } = useContext(ClientesContext);
+  const { adicionarCliente, cliente, editarCliente, obterClienteId } = useContext(ClientesContext);
 
   async function onSubmit(data: Object) {
     if(id) {
@@ -31,10 +31,17 @@ export function PessoaJuridica() {
   }
 
   useEffect(() => {
+
     if (id) {
       reset(cliente);
     }
   }, [cliente]);
+
+  useEffect(() => {
+    if (id) {
+      obterClienteId(id);
+    }
+  }, []);
 
   return (
     <FormularioContainer 
