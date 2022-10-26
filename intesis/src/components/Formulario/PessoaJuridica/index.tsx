@@ -32,9 +32,9 @@ export function PessoaJuridica() {
 
   useEffect(() => {
     if (id) {
-        reset(cliente);
+      reset(cliente);
     }
-}, [cliente]);
+  }, [cliente]);
 
   return (
     <FormularioContainer 
@@ -56,13 +56,13 @@ export function PessoaJuridica() {
         </InputContainer>
 
         <InputContainer size="grande">
-          <label htmlFor="nome">
+          <label htmlFor="nomeFantasia">
             Nome Fantasia
           </label>
           <input 
             type="text" 
-            id="nome" 
-            {...register("nome", { required: true})}
+            id="nomeFantasia" 
+            {...register("nomeFantasia", { required: true})}
           />
           {errors.nome && <Erro/>}
         </InputContainer>
@@ -114,7 +114,7 @@ export function PessoaJuridica() {
         </InputContainer>        
 
         <InputContainer size="medio">
-          <label htmlFor="incEstadual">
+          <label htmlFor="inscEstadual">
             Insc. Estadual
           </label>
           <InputMask
@@ -122,7 +122,7 @@ export function PessoaJuridica() {
             placeholder="000.000.000.000"
             type="text" 
             id="inscEstadual"
-            {...register("incEstadual", { required: true})}
+            {...register("inscEstadual", { required: true})}
           />
           {errors.inscEstadual && <Erro/>}
         </InputContainer>
@@ -142,13 +142,13 @@ export function PessoaJuridica() {
         </InputContainer>
 
         <InputContainer size="grande">
-          <label htmlFor="email">
+          <label htmlFor="emailResponsavel">
             Email Responsável
           </label>
           <input 
             type="email"
-            id="email"
-            {...register("email", { required: true})}
+            id="emailResponsavel"
+            {...register("emailResponsavel", { required: true})}
             />
             {errors.email && <Erro/>}
         </InputContainer>

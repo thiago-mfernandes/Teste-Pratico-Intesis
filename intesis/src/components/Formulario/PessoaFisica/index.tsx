@@ -34,9 +34,9 @@ export function PessoaFisica() {
 
   useEffect(() => {
     if (id) {
-        reset(cliente);
+      reset(cliente);
     }
-}, [cliente]);
+  }, [cliente]);
 
   return(
     <FormularioContainer 
@@ -82,24 +82,24 @@ export function PessoaFisica() {
         </InputContainer>
 
         <InputContainer size="pequeno">
-          <label htmlFor="nascimentoResponsavel">
+          <label htmlFor="nasciResponsavel">
             Data Nasc. Responsável
           </label>
           <InputMask 
             mask="99/99/9999"
             type="text" 
             placeholder="00/00/0000" 
-            id="nascimentoResponsavel"
-            {...register("nascimentoResponsavel")}
+            id="nasciResponsavel"
+            {...register("nasciResponsavel")}
           />
         </InputContainer>
 
         <InputContainer size="40%">
-          <label htmlFor="EstadoCivil">Estado Civil</label>
+          <label htmlFor="estadoCivil">Estado Civil</label>
           <select 
 
-              id="EstadoCivil" 
-              {...register("EstadoCivil")}
+              id="estadoCivil" 
+              {...register("estadoCivil")}
             >
             {
               estadoCivil.map((item, index) => (

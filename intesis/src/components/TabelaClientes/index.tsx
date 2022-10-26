@@ -70,7 +70,7 @@ export function TabelaClientes() {
                  */}
                 <td>{cliente.razaoSocial ? cliente.razaoSocial : cliente.nomeCompleto}</td>
                 <td>{cliente.cnpj ? cliente.cnpj : cliente.cpf}</td>
-                <td>{cliente.email}</td>
+                <td>{cliente.emailResponsavel ? cliente.emailResponsavel : cliente.email}</td>
                 <td>{cliente.telefone}</td>
                 <td>{cliente.celular}</td>
                 <td>
