@@ -1,21 +1,34 @@
-import { ChangeEvent, useState } from 'react';
-import { PessoaFisica } from './PessoaFisica';
-import { PessoaJuridica } from './PessoaJuridica/index';
+import { ChangeEvent, useContext, useState, useEffect } from "react";
+import { ClientesContext } from "../../ClientsContext";
+import { PessoaFisica } from "./PessoaFisica";
+import { PessoaJuridica } from "./PessoaJuridica/index";
 
-import { GrupoEscolha, Titulo } from './styles';
+import { GrupoEscolha, Titulo } from "./styles";
 
 export function Formulario() {
-
+  
   const FORM_TYPES = {
-    PF: 'Pessoa Física',
-    PJ: 'Pessoa Jurídica'
+    PF: "Pessoa Física",
+    PJ: "Pessoa Jurídica"
   }
   
+  const { cliente } = useContext(ClientesContext);
   const [formType, setFormType] = useState(FORM_TYPES.PJ);
+  
   
   const handleChangeFormType = (event: ChangeEvent<HTMLInputElement>) => {
     setFormType(event.target.value);
   }
+
+  useEffect(() => {
+    if(cliente.razaoSocial) {
+      setFormType(FORM_TYPES.PJ);
+    } else if(cliente.nomeCompleto) {
+      setFormType(FORM_TYPES.PF);
+    } else {
+      return;
+    }
+  },[cliente])
 
   return (
     <>

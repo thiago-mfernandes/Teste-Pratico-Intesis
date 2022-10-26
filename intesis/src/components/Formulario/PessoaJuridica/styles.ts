@@ -1,30 +1,25 @@
-import styled from 'styled-components';
-
-interface InputContainerProps {
-  size: string;
-  direction?: string;
-  align?: string;
-}
+import styled from "styled-components";
+import { InputContainerProps } from "../../../types";
 
 function handleSize(size: string) {
-  if(size === 'pequeno') {
-    return '20%';
-  } else if (size === 'medio') {
-    return '32.5%';
-  } else if (size === 'grande') {
-    return '40%'
+  if(size === "pequeno") {
+    return "20%";
+  } else if (size === "medio") {
+    return "32.5%";
+  } else if (size === "grande") {
+    return "40%"
   } else {
     return size;
   }
 }
 
 function handleAlign(align: string | undefined) {
-  if( align === 'flex-end') {
-    return 'flex-end';
-  } else if( align === 'center') {
-    return 'center';
-  } else if( align === 'flex-start') {
-    return 'flex-start';
+  if( align === "flex-end") {
+    return "flex-end";
+  } else if( align === "center") {
+    return "center";
+  } else if( align === "flex-start") {
+    return "flex-start";
   } 
 }
 
@@ -45,7 +40,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   align-items: ${({align}) => handleAlign(align)};
   justify-content: center;
-  flex-direction: ${({direction}) => direction === 'row' ? 'row' : 'column'};
+  flex-direction: ${({direction}) => direction === "row" ? "row" : "column"};
   width: ${({size}) => handleSize(size)};
   margin-right: 1rem;
   margin-bottom: 1rem;

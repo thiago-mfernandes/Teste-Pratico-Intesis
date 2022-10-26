@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Table = styled.table`
   width: calc(100% - 4rem);
@@ -21,15 +21,21 @@ export const Table = styled.table`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: 40px;
   }
 
   td {
     padding: 0.25rem 0.5rem;
     border: 0;
-    color: var(--textTable);
     border-bottom: 1px solid var(--textTable);
+    color: var(--textTable);
+  }
+  
+  td[id="id"] {
+    max-width: 10ch;
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   td button {

@@ -44,20 +44,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-Teste Thiago:
-## Pontos positivos:
-- [] - Interface "similar" ao projeto visual proposto
-- [] - Iniciou sem problemas
-- [] - Utilizando typescript
-- [] - Código razoavelmente organizado
-- [] - Algumas validações implementadas
-
-## Pontos negativos:
-- [x] - Botão "Cancelar" não funciona, tenta enviar o form
-- [x] - Campos sem máscara
-- [x] - Alguns campos numéricos permitem texto
-- [] - Função de "Editar" não funciona
-- [] - Não dá pra saber se tudo foi gravado corretamente pois não há funcionalidade de editar/visualizar cadastro
-

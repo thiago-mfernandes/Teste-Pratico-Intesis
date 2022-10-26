@@ -1,3 +1,12 @@
+import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Erro } from "../Erro";
+
+import estadoCivil from "../../../data/estadoCivil.json";
+import unidadeFederativa from "../../../data/unidadeFederative.json";
+import tipoLogradouro from "../../../data/tipoLogradouro.json";
+
 import { 
   ContainerButton, 
   DadosPessoais, 
@@ -5,30 +14,29 @@ import {
   FormularioContainer, 
   InputContainer } from "./styles";
 
-import estadoCivil from "../../../data/estadoCivil.json";
-import unidadeFederativa from "../../../data/unidadeFederative.json";
-import tipoLogradouro from '../../../data/tipoLogradouro.json';
-
-import { useForm } from 'react-hook-form';
-import { useContext } from "react";
-import { Link } from 'react-router-dom';
 import { ClientesContext } from "../../../ClientsContext";
-import { Erro } from '../Erro';
-
-import InputMask from 'react-input-mask';
+import InputMask from "react-input-mask";
 
 
 export function PessoaFisica() {
 
-  const { adicionarCliente, cliente } = useContext(ClientesContext);
-
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: cliente
-  });
+  const { id } = useParams();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const { adicionarCliente, cliente, editarCliente } = useContext(ClientesContext);
 
   async function onSubmit(data: Object) {
-    await adicionarCliente(data);    
+    if(id) {
+      await editarCliente(id, data);
+    } else {
+      await adicionarCliente(data);
+    }
   }
+
+  useEffect(() => {
+    if (id) {
+        reset(cliente);
+    }
+}, [cliente]);
 
   return(
     <FormularioContainer 
@@ -41,10 +49,9 @@ export function PessoaFisica() {
             Nome Completo
           </label>
           <input 
-            defaultValue={cliente.nome}
-            id="nome" 
-            {...register("nome", { required: true})}
+            id="nomeCompleto" 
             type="text" 
+            {...register("nomeCompleto", { required: true})}
           />
           {errors.nome && <Erro/>}
         </InputContainer>
@@ -55,8 +62,8 @@ export function PessoaFisica() {
           </label>
           <input 
             id="apelido"
-            {...register("apelido")}
             type="text" 
+            {...register("apelido")}
           />
         </InputContainer>
 
@@ -202,12 +209,12 @@ export function PessoaFisica() {
           />
         </InputContainer>
 
-        <InputContainer size="medio">
+        <InputContainer size="pequeno">
           <label htmlFor="celular">
             Celular
           </label>
-          <InputMask 
-            mask="(99)9 9999-9999" 
+          <InputMask
+            mask="(99)9 9999-9999"  
             placeholder="(00)0 0000-0000"
             type="text" 
             id="celular"
@@ -257,8 +264,8 @@ export function PessoaFisica() {
           {errors.UF && <Erro/>}
         </InputContainer>
 
-        <InputContainer size='pequeno'>
-          <label htmlFor='tipoLogradouro'>
+        <InputContainer size="pequeno">
+          <label htmlFor="tipoLogradouro">
             Tipo Logradouro
           </label>
           <select 
@@ -286,14 +293,14 @@ export function PessoaFisica() {
           {errors.endereco && <Erro/>}
         </InputContainer>
 
-        <InputContainer size='50%'>
-          <label htmlFor='numero'>
+        <InputContainer size="50%">
+          <label htmlFor="numero">
             Número
           </label>
           <input 
             type="number" 
-            id='numero' 
-            {...register("celular", { required: true})}
+            id="numero" 
+            {...register("numero", { required: true})}
           />
           {errors.numero && <Erro/>}
         </InputContainer>
@@ -316,13 +323,13 @@ export function PessoaFisica() {
           <input 
             type="text" 
             id="bairro" 
-            {...register("celular", { required: true})}
+            {...register("bairro", { required: true})}
           />
           {errors.bairro && <Erro/>}
         </InputContainer>        
 
-        <InputContainer size='100%'>
-          <label htmlFor='Observação'>
+        <InputContainer size="100%">
+          <label htmlFor="Observação">
             Observação
           </label>
           <textarea 

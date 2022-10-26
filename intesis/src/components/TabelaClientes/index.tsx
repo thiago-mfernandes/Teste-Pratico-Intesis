@@ -1,19 +1,18 @@
-import { Table, Container, BotaoAdicionar, ContainerSearch } from './styles';
-import { PencilSimple, UserMinus, ArrowUp, PlusCircle, MagnifyingGlass } from 'phosphor-react';
+import { useContext, useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
-import { useContext, useState } from 'react';
-import { ClientesContext } from '../../ClientsContext';
-import { Clientes } from '../../ClientsContext'
+
+import { Table, Container, BotaoAdicionar, ContainerSearch } from "./styles";
+import { PencilSimple, UserMinus, ArrowUp, PlusCircle, MagnifyingGlass } from "phosphor-react";
+
+import { ClientesContext } from "../../ClientsContext";
+import { Clientes } from "../../types";
 
 
 export function TabelaClientes() {
   
-  const { clientes, deletarCliente, editarCliente } = useContext(ClientesContext);  
-  //console.log("Tabela Clientes state =>", clientes);
-
-  const[busca, setBusca] = useState('');
-  //console.log("Tabela Clientes state busca =>", busca);
-
+  const { clientes, deletarCliente, obterClienteId } = useContext(ClientesContext); 
+  const[busca, setBusca] = useState("");
+  
   let navigate = useNavigate();
 
   return (
@@ -28,7 +27,7 @@ export function TabelaClientes() {
 
         <ContainerSearch>
           <label htmlFor="search">
-            <MagnifyingGlass color='#2873B6' size={20}/>
+            <MagnifyingGlass color="#2873B6" size={20}/>
           </label>
           <input 
             type="search" 
@@ -48,15 +47,15 @@ export function TabelaClientes() {
             <th>Email</th>
             <th>Tel</th>
             <th>Cel</th>
-            <th>{' '}</th>
-            <th>{' '}</th>
+            <th>{" "}</th>
+            <th>{" "}</th>
           </tr>
         </thead>
         <tbody>
           {
             // eslint-disable-next-line array-callback-return
             clientes.filter((value) => {
-              if(busca === '') {
+              if(busca === "") {
                 //retorna todo o mock
                 return value;
               } else if(value.razaoSocial.includes(busca)){
@@ -69,24 +68,26 @@ export function TabelaClientes() {
                 {/**
                  * se razao social estiver preenchido - mostrar razao social
                  */}
-                <td>{cliente.razaoSocial ? cliente.razaoSocial : cliente.nome}</td>
+                <td>{cliente.razaoSocial ? cliente.razaoSocial : cliente.nomeCompleto}</td>
                 <td>{cliente.cnpj ? cliente.cnpj : cliente.cpf}</td>
                 <td>{cliente.email}</td>
                 <td>{cliente.telefone}</td>
                 <td>{cliente.celular}</td>
                 <td>
                   <button 
-                    onClick={() => editarCliente(cliente.id)}
+                    //esta funcao vai obter o id do cliente e no icone abaixo
+                    onClick={() => obterClienteId(cliente.id)}
                   >                    
                     <PencilSimple 
-                      color='#2873B6' 
+                      color="#2873B6" 
+                      //redirecionar para o formulario
                       onClick={() => {navigate(`/editarCliente/${cliente.id}`)}}>
                     </PencilSimple>
                   </button>
                 </td>
                 <td>
                   <button onClick={() => deletarCliente(cliente.id)}>
-                    <UserMinus color='#EA3F7A'/>
+                    <UserMinus color="#EA3F7A"/>
                   </button>
                 </td>
               </tr>   
