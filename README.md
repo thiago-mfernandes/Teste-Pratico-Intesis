@@ -90,8 +90,7 @@ Exemplo de implementação da interface gráfica:
 - - [x] Listagem de Clientes
 - - [x] Possibilidade de Adicionar novo cadastro, alterar ou excluir
 - - [x] Possibilidade de incluir cadastro, editar ou excluir
-- - [x] O conceito de API REST foi implementado utilizando Json-Server 
-- - [x] O conceito de API REST foi implementado utilizando Json-Server 
+- - [x] O conceito de API REST foi implementado utilizando Json-Server  
 - - [x] O projeto foi desenvolvido com [ReactJs](https://react.dev/) e [Typescript](https://www.typescriptlang.org/) .
 
 ---
