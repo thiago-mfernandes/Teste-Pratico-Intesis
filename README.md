@@ -1,6 +1,6 @@
 <h1 align="center">
 
-  <img alt="" src="./site-asturias/public/desktop-home.jpg">
+  <img alt="" src="./intesis/public/desktop-home.jpg">
 
 </h1>
 
@@ -20,13 +20,13 @@
 
 ## 💻 Sobre o teste
 
-Foi encaminhada a diretriz do teste com as especificações e requisitos que precisavam ser comtemplados no teste.
+📍 Foi encaminhada a diretriz do teste com as especificações e requisitos que precisavam ser comtemplados no teste.
 
 ---
 
 ## ⚙ Especificações
 
-Desenvolver um CRUD com as seguintes características: 
+📍 Desenvolver um CRUD com as seguintes características: 
 
 🔎 Consulta e Cadastro de cliente;<br/>
 
@@ -82,9 +82,9 @@ Exemplo de implementação da interface gráfica:
 
 [Veja as especificações no original clicando aqui!](https://docs.google.com/document/d/1SFPLz5W8Rhp7Sz1CqGbjr2NTDllk5W2CfbCMPlpuTbY/edit)
 
-- [x] O prazo de entrega foi de 48 horas, e o projeto foi entregue no prazo.
+- [x] O prazo de entrega foi de 48 horas, e o projeto FOI ENTREGUE no prazo.
 
-- [x] Todas as caracteristicas foram implementadas: 
+- [x] TODAS as características foram implementadas: 
 
 - - [x] Filtro por nome e/ou razão Social
 - - [x] Listagem de Clientes
@@ -136,7 +136,7 @@ Por não haver especificação e por causa do prazo, optei por não desenvolver 
 
 ## 🚀 Como executar o projeto
 
-Este projeto possui apenas o Frontend
+Este projeto possui o Frontend e um Backend fake
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
