@@ -100,6 +100,7 @@ Exemplo de implementação da interface gráfica:
 
 Como ficou o layout da aplicação:
 
+
 ---
 
 ## 📱 Mobile
@@ -112,22 +113,22 @@ Por não haver especificação e por causa do prazo, optei por não desenvolver 
 
   A tela inicial recebe os dados consumidos do back-end fake, os dados são exibidos na tabela, cada usuario exibido pode receber alteração ou edição em seu proprio cadastro. <br />
   O filtro também pode ser observado em funcionamento buscando pelo "nome":
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  ![intesis-filtro-1](https://user-images.githubusercontent.com/91342038/226121197-8263f640-babb-4bf5-93e3-e41c5f2add5f.gif)
 
-  A exclusão de um item acontece, e a tabela paresenta os dados sem o dado excluido:
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  É possível excluir um item, e a tabela apresenta os dados sem o dado excluido:
+  ![intesis-delete-2](https://user-images.githubusercontent.com/91342038/226121239-a861a885-aa0f-45ae-b4a8-00520a06a0ba.gif)
 
-  Ao clicar em adicionar novo cadastro, o usuário tem a possibilidade de cadastrar um usuario do tipo pessoa fisica ou juridica, com diferentes campos nos respectivos formularios:
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  Ao clicar em adicionar novo cadastro, o usuário tem a possibilidade de cadastrar um usuário do tipo pessoa física ou jurídica, com diferentes campos nos respectivos formularios:
+  ![intesis-dois-forms-3](https://user-images.githubusercontent.com/91342038/226121258-6379a1b3-4852-47c5-b2c9-e9f842918448.gif)
 
-  Foi realizada a validação de todos os dados de ambos os campos, não sendo possível enviar dados errados ou enviar o formulário em branco, como no exemplo, podendo o usuario cancelar sua ação e retornar a pagina de tabela:
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  Foi realizada a validação de todos os dados de ambos os campos, não sendo possível enviar dados incompatíveis com o campo ou enviar o formulário em branco, como no exemplo, podendo o usuário cancelar sua ação e retornar na página de tabela:
+  ![intesis-validacao-dados-4](https://user-images.githubusercontent.com/91342038/226121330-f3b602be-60ff-4acd-b59b-b916e170c543.gif)
 
-  Um novo usuario pode ser adicionado:
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  Um novo usuário pode ser adicionado:
+  ![intesis-cadastro-5](https://user-images.githubusercontent.com/91342038/226121338-ebaa28aa-069b-4433-80cf-ee5133417dc6.gif)
 
-  O usuario pode ser ter seus dados alterados:
-  <img alt="" src="./intesis/public/desktop-home.jpg" width="300px">
+  O usuário pode ter seus dados alterados:
+  ![intesis-edicao-6](https://user-images.githubusercontent.com/91342038/226121382-71b820f9-c4ee-47b4-8dd3-89b6e23eab10.gif)
 
   
 </p>
@@ -136,7 +137,7 @@ Por não haver especificação e por causa do prazo, optei por não desenvolver 
 
 ## 🚀 Como executar o projeto
 
-Este projeto possui o Frontend e um Backend fake
+Este projeto possui o Frontend e um Backend fake:
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
@@ -161,7 +162,7 @@ $ cd intesis
 #Instale as dependências do projeto
 $ npm install
 
-#Execute o servidor local para que a API REST sirva o frontend com os dados
+#Execute o servidor local para que a API REST FAKE sirva o frontend com os dados
 $ npm run server
 
 #Execute a aplicação em modo de desenvolvimento
